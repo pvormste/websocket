@@ -125,12 +125,19 @@ func wstestClientServer(ctx context.Context) (url string, closeFn func(), err er
 		}
 	}()
 
-	args := []string{"--mode", "fuzzingserver", "--spec", specFile,
+	var args []string
+	args = append(args, "run", "-it", "--rm",
+    -v "${PWD}/config:/specFile", \
+    -v "${PWD}/reports:/reports", \
+    "-p=9001:9001", \
+    "--name=fuzzingserver", \
+    "crossbario/autobahn-testsuite",
+	args = append(args, "wstest", "--mode", "fuzzingserver", "--spec", specFile,
 		// Disables some server that runs as part of fuzzingserver mode.
 		// See https://github.com/crossbario/autobahn-testsuite/blob/058db3a36b7c3a1edf68c282307c6b899ca4857f/autobahntestsuite/autobahntestsuite/wstest.py#L124
 		"--webport=0",
-	}
-	wstest := exec.CommandContext(ctx, "wstest", args...)
+	)
+	wstest := exec.CommandContext(ctx, "docker", args...)
 	err = wstest.Start()
 	if err != nil {
 		return "", nil, fmt.Errorf("failed to start wstest: %w", err)
