@@ -138,3 +138,5 @@ to nhooyr.io/websocket.
 in an event driven style for performance. See the author's [blog post](https://medium.freecodecamp.org/million-websockets-and-go-cc58418460bb).
 
 However when writing idiomatic Go, nhooyr.io/websocket will be faster and easier to use.
+
+# All credits go to nhooyr.io/websocket !
