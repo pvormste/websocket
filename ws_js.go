@@ -1,4 +1,4 @@
-package websocket // import "nhooyr.io/websocket"
+package websocket // import "github.com/pvormste/websocket"
 
 import (
 	"bytes"
@@ -13,9 +13,9 @@ import (
 	"sync"
 	"syscall/js"
 
-	"nhooyr.io/websocket/internal/bpool"
-	"nhooyr.io/websocket/internal/wsjs"
-	"nhooyr.io/websocket/internal/xsync"
+	"github.com/pvormste/websocket/internal/bpool"
+	"github.com/pvormste/websocket/internal/wsjs"
+	"github.com/pvormste/websocket/internal/xsync"
 )
 
 // Conn provides a wrapper around the browser WebSocket API.
